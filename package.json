@@ -1,0 +1,19 @@
+{
+  "name": "chess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chess.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chrisoakman/chessboardjs": "^1.0.0",
+    "bootstrap": "^4.4.1",
+    "chess.js": "^0.13.3"
+  },
+  "devDependencies": {
+    "@types/chess.js": "^0.13.2"
+  }
+}
