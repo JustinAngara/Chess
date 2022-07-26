@@ -1,5 +1,5 @@
 
-// creates config
+// creates config for chessboardjs libary
 let config = {
   draggable: true,
   position:'start'
@@ -11,17 +11,20 @@ let board = ChessBoard('board1',config);
 $('#restartBtn').on('click',board.start);
 
 
+// add search btn
 $('#searchBtn').on('click',function(){
   board.position($('#searchbar').val());
   $('#searchbar').val("");
 });
 
+// action listener for the addBtn id
 $('#addBtn').on('click',function(){
   CrudManager.createFen($('#enterName').val(),$('#enterFen').val());
   $('#enterName').val("");
   $('#enterFen').val("");
 });
 
+// created a copy btn to get fen
 $('#copyBtn').on('click',function(){
   let text = board.fen();
   navigator.clipboard.writeText(text).then(() => {
@@ -53,7 +56,8 @@ class CrudManager {
   }
   
   static getTable(){
-    console.log("reset");
+    // Updates whole table
+    
     $.ajax({
       url: 'https://crudcrud.com/api/'+this.url+'/fens',
       method: 'GET',
@@ -86,6 +90,7 @@ class CrudManager {
   }
 
   static updateFen(id,name,fen){
+    // updates fen given the ID
     fetch(
       'https://crudcrud.com/api/'+this.url+'/fens/'+id, {
         headers: { "Content-Type": "application/json; charset=utf-8" },
@@ -104,7 +109,7 @@ class CrudManager {
 }
 
 function addRows(a,b){
-
+  // create rows everytime AJAX retrieves an element
   $('#table-body').fadeIn(1000);
   $('#table-body').html(
     $('#table-body').html()+
@@ -129,7 +134,7 @@ function addRows(a,b){
 
 }
 
-
+// Updates Table 
 CrudManager.getTable();
 
 
@@ -142,7 +147,7 @@ $(document).ajaxStop(function(){
 
       let element = event.target;
 
-      // returns fen given a type of string: name+fen:row
+      // returns fen given a type of string: [row+fen:id]
       let fen = element.value.slice(element.value.indexOf("+")+1);
       fen = fen.slice(0,-2);
       // returns id 
@@ -154,17 +159,19 @@ $(document).ajaxStop(function(){
 
       console.log("ROW:"+row);
       if(element.innerHTML=="Play"){
-
+        // Edits boards position and adds FEN to searchbar
         $('#searchbar').val(fen);
         board.position($('#searchbar').val());
 
       } else if(element.innerHTML=="Delete"){
-
+        // deletes fen
         CrudManager.deleteFen(id);
         
       } else{
-        // update
-        CrudManager.updateFen(id,$('#enterName').val(),$('#enterFen').val())
+        // Updates Table
+        CrudManager.updateFen(id,$('#enterName').val(),$('#enterFen').val());
+        $('#enterName').val("");
+        $('#enterFen').val("");
       }
 
     });
