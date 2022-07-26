@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cool Chess</title>
+
+    <link rel = "icon" href = 
+    "images.jpg"
+            type = "image/x-icon">
+            
     <link rel="stylesheet" href="chess.css">
 
+    <script type="importmap">
+      { "imports": {
+        "vue":        "https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.esm-browser.min.js",
+        "vue-router": "https://cdnjs.cloudflare.com/ajax/libs/vue-router/4.0.16/vue-router.esm-browser.min.js"
+      } }
+    </script>
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet"
     href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
     integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU"
     crossorigin="anonymous">
+
 
 
 </head>
@@ -32,11 +44,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="chess.html">Play <span class="sr-only">(current)</span></a>
             </li>
         
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="contact.html">Contact</a>
             </li>
 
             <li class="nav-item">
@@ -57,29 +69,58 @@
     <div class="input-group-append">
       
       <input id="searchbar" type="text" class="form-control" placeholder="Enter FEN">
-      <div class="dropdown">
-          
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Custom FEN Positions
-        </button>
-  
-        <div id = "dropdownpos"class="dropdown-menu div-float" aria-labelledby="dropdownMenuButton"></div>
-   
-  
-      </div>
-      <button id="searchBtn" class="btn btn-primary div-float" type="button">Search</button>
+      <button id="searchBtn" class="btn btn-primary" type="button">Search</button>
+
     </div>
 
 
       <div class="input-group">
         
-        <div id="board1" class="div-float small-board"></div>
+        <div id="board1" class="div-float small-board highlight-white"></div>
+        
+
+        <div>
+
+          <div class="input-group">
+            
+            <div id="board1" class=" small-board highlight-white"></div>
+            
+            
+            <div>
+              <button id="restartBtn"type="button" class="btn btn-secondary">Reset</button>
+              <button id="copyBtn"type="button" class="btn btn-primary">Copy Current Pos FEN</button>
+              <div class="display-fen">
+                Chess Positions
+              </div>
+              <table class="table table-striped table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Fen</th>
+                  </tr>
+                </thead>
     
+                <tbody id = "table-body">        
+                
+                </tbody>
+              </table>
+
+              <input id="enterName" type="text" class="form-control" placeholder="Enter Name">
+              <input id="enterFen" type="text" class="form-control" placeholder="Enter FEN">
+              <br>
+              <button id="addBtn" class="btn btn-primary" type="button">Add</button>
+            </div>
+
+
+            
+        </div>
+
       </div>
      </div>
 
     
-     <button id ="restartBtn" type="button" class="start-btn cool-text btn btn-info">Click here to reset!</button>    
+     
     </div>
     
     

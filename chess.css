@@ -7,7 +7,7 @@
 
 .small-board{
     width:50%;
-    padding-top: 40px;
+
 }
 
 .header-text{
@@ -23,13 +23,26 @@
 
 
 .background-image{
-    background-image: url('background1.gif');
+    background-image: url('background10.gif');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; 
+    
 }
 .div-float{
-    float:left;
+    float:right;
+}
+.display-fen{
+    padding-top: 40px;
+    color:white;
+    text-align: center;
+    font-size:20px;
 }
 
+.restartBtn{
+    font-size:40px
+}
+#table-body{
+    display:none;
+}
