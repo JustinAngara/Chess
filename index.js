@@ -35,7 +35,7 @@ $('#copyBtn').on('click',function(){
 
 class CrudManager {
   // crudcrud url
-  static url = "5fa8a0e76d89420da73b7d5e63ad566c"; 
+  static url = "497f4982258e45ff8b646ae42574739b"; 
 
   // creates name to fens
   static createFen(name,fen){
@@ -177,4 +177,3 @@ $(document).ajaxStop(function(){
     });
   });
 });
-
